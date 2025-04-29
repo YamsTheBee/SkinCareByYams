@@ -1,0 +1,61 @@
+/* Navbar.css */
+
+/* Background color et disposition */
+.navbar {
+	background-color: #1d3940;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 2rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.navbar .logo a {
+	text-decoration: none;
+	color: white;
+	font-size: 2rem;
+}
+
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.nav-links .nav-link {
+	text-decoration: none;
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+.nav-links .nav-link:hover {
+	color: #f1f1f1; /* Change la couleur au survol */
+}
+
+/* Mobile: Utiliser les media queries pour rendre la navbar responsive */
+@media (max-width: 768px) {
+	.nav-links {
+		display: none;
+		flex-direction: column;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.navbar {
+		flex-direction: column;
+		padding: 1rem;
+	}
+
+	.nav-links.active {
+		display: flex;
+    
+	}
+
+	.nav-link {
+		text-align: center;
+		width: 100%;
+
+}
+}
+
