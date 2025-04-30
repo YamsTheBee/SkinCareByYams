@@ -17,7 +17,7 @@ function HeroBanner() {
 			</div>
 
 			{showAppointment && (
-				<RendezVous onClose={() => setShowAppointment(false)} />
+				<RendezVous onClose={() => setShowAppointment(false)} rdvId={undefined} />
 			)}
 		</div>
 	);

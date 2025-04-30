@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css"; // Assure-toi d'importer le CSS personnalisé
 
 const Navbar = () => {
@@ -10,20 +11,12 @@ const Navbar = () => {
 			</div>
 			<ul className="nav-links">
 				<li>
-					<a href="#hydratant" className="nav-link">
-						Hydratant
-					</a>
+					<Link to="/">Accueil</Link>
 				</li>
 				<li>
-					<a href="#nettoyant" className="nav-link">
-						Nettoyant
-					</a>
+					<Link to="/Produits">Produits</Link>
 				</li>
-				<li>
-					<a href="#soins-naturels" className="nav-link">
-						Soins Naturels
-					</a>
-				</li>
+			
 				<li>
 					<a href="#contact" className="nav-link">
 						Contact

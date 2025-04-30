@@ -1,0 +1,141 @@
+/* ProduitsCard.css */
+
+.product-card {
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	width: 100%;
+	max-width: 300px; /* Limite la largeur maximale de la carte */
+	margin: auto; /* Centre la carte */
+}
+
+.product-card:hover {
+	transform: translateY(-5px); /* Légère remontée au survol */
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+.product-card__header {
+	position: relative;
+}
+
+.product-card img {
+	width: 100%; /* S'assurer que l'image occupe toute la largeur de la carte */
+	height: 250px; /* Hauteur fixe de l'image */
+	object-fit: cover; /* Redimensionner l'image sans la déformer */
+	border-bottom: 2px solid #f0f0f0; /* Légère bordure entre l'image et le contenu */
+	border-radius: 5px;
+}
+
+/* 
+.product-card__image--placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 250px;
+	background-color: #f0f0f0;
+	color: #999;
+	font-size: 1rem;
+} */
+
+.product-card .product-info {
+	padding: 1rem;
+}
+
+.product-card h3 {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.product-card p {
+	font-size: 1rem;
+	color: #666;
+	margin-bottom: 1rem;
+}
+
+.product-card .price {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: #333;
+}
+
+.product-card .btn-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+.product-card .btn-container button {
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 25px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.product-card__buttons {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 0.5rem;
+}
+
+.product-card__button {
+	padding: 0.7rem 1.5rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: 25px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.3s;
+}
+
+.product-card .btn-container button:hover {
+	background-color: #555;
+}
+.product-card__edit-button {
+	background-color: #1d3940;
+	color: #fff;
+}
+
+.product-card__edit-button:hover {
+	background-color: #483819;
+	transform: translateY(-2px);
+}
+
+.product-card__delete-button {
+	background-color: #c82333;
+	color: #fff;
+}
+
+.product-card__delete-button:hover {
+	background-color: #c82333;
+	transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+	.product-card {
+		max-width: 100%;
+	}
+
+	.product-card__image {
+		height: 200px;
+	}
+
+	.product-card__name {
+		font-size: 1.2rem;
+	}
+
+	.product-card__description,
+	.product-card__details,
+	.product-card__skin-type,
+	.product-card__rating {
+		font-size: 0.9rem;
+	}
+
+	.product-card__button {
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+	}
+}
