@@ -39,6 +39,22 @@ const ProduitsPage = () => {
 	const handleUpdate = async () => {
 		if (!updatedProduct) return;
 
+		// vérification du bug modification form
+		console.log("Début de la mise à jour du produit:", updatedProduct);
+
+		// Vérifiez que toutes les propriétés requises sont présentes
+		if (
+			!updatedProduct.id ||
+			!updatedProduct.name ||
+			!updatedProduct.description ||
+			!updatedProduct.price ||
+			!updatedProduct.product_type ||
+			!updatedProduct.product_url
+		) {
+			console.error("Données du produit incomplètes:", updatedProduct);
+			return;
+		}
+
 		try {
 			const response = await fetch(
 				`http://localhost:5000/api/produits/${updatedProduct.id}`, // Vérifie l'endpoint pour la mise à jour
