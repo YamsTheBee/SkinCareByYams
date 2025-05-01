@@ -16,7 +16,10 @@ const Navbar = () => {
 				<li>
 					<Link to="/Produits">Produits</Link>
 				</li>
-			
+				<li>
+					<Link to="/admin/appointments">Admin Appointments</Link>
+				</li>
+
 				<li>
 					<a href="#contact" className="nav-link">
 						Contact

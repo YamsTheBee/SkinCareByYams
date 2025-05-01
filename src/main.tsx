@@ -3,9 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 import HomePage from "./pages/HomePage.tsx";
-
-// import Rdv from "./Components/Rdv.tsx";
 import ProduitsPage from "./pages/ProduitsPage.tsx";
+import AdminAppointmentsPage from "./pages/Admin.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -19,10 +18,10 @@ const router = createBrowserRouter([
 				path: "/produits",
 				element: <ProduitsPage />,
 			},
-			// {
-			// 	path: "rdv",
-			// 	element: <Rdv onClose={undefined} />,
-			// },
+			{
+				path: "/admin/appointments", // Une route plus lisible
+				element: <AdminAppointmentsPage />,
+			},
 		],
 	},
 ]);
