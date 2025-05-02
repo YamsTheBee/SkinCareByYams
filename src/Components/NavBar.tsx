@@ -6,17 +6,20 @@ const Navbar = () => {
 		<nav className="navbar">
 			<div className="logo">
 				<a href="/" className="text-2xl font-semibold text-white">
-					SkinCareByYams
+					S&C
 				</a>
 			</div>
 			<ul className="nav-links">
 				<li>
 					<Link to="/">Accueil</Link>
 				</li>
+
+				<li>
+					<Link to="/admin/appointments">Admin-Panel</Link>
+				</li>
 				<li>
 					<Link to="/Produits">Produits</Link>
 				</li>
-			
 				<li>
 					<a href="#contact" className="nav-link">
 						Contact

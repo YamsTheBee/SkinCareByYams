@@ -1,93 +1,114 @@
-// // AdminDashboard.js
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import "./AdminDashboard.css"; // Assurez-vous d'importer le CSS ici
+import { useEffect, useState } from "react";
+import axios from "axios";
+import AdminSidebar from "../Components/AmdinSideBar/AdminSideBar";
+import AdminSearchBar from "../Components/AdminSearchBar/AdminSearchBar";
+import "./Admin.css";
+interface Appointment {
+	id: number;
+	name: string;
+	email: string;
+	date: string;
+	reason: string;
+	status: string;
+}
 
-// const AdminDashboard = () => {
-// 	const [appointments, setAppointments] = useState([]);
+const AdminAppointmentsPage = () => {
+	const [appointments, setAppointments] = useState<Appointment[]>([]);
+	const [error, setError] = useState<string>("");
+	const [activeSection] = useState<string>("rdv");
+	// biome-ignore lint/correctness/noEmptyPattern: <explanation>
+	const [] = useState<string>("");
 
-// 	useEffect(() => {
-// 		// Récupérer tous les rendez-vous
-// 		axios
-// 			.get("http://localhost:5000/admin/appointments")
-// 			.then((response) => {
-// 				setAppointments(response.data);
-// 			})
-// 			.catch((error) => {
-// 				console.error("Erreur de récupération des rendez-vous", error);
-// 			});
-// 	}, []);
+	useEffect(() => {
+		// Récupérer les rendez-vous depuis l'API
+		const fetchAppointments = async () => {
+			try {
+				const response = await axios.get(
+					"http://localhost:5000/admin/appointments",
+				);
+				setAppointments(response.data);
+			} catch (err) {
+				setError("Erreur lors de la récupération des rendez-vous.");
+				console.error(err);
+			}
+		};
 
-// 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-// 	const handleStatusUpdate = (id: any, status: string) => {
-// 		axios
-// 			.put(`http://localhost:5000/admin/appointments/${id}/status`, { status })
-// 			.then((response) => {
-// 				// Mettre à jour le statut dans l'UI
-// 				setAppointments((prevAppointments) =>
-// 					prevAppointments.map((appointment) =>
-// 						appointment.id === id
-// 							? { ...appointment, status: response.data.status }
-// 							: appointment,
-// 					),
-// 				);
-// 			})
-// 			.catch((error) => {
-// 				console.error("Erreur de mise à jour du statut", error);
-// 			});
-// 	};
+		fetchAppointments();
+	}, []);
 
-// 	return (
-// 		<div className="dashboard-container">
-// 			<h1>Dashboard Admin - Gestion des Rendez-vous</h1>
-// 			{appointments.length === 0 ? (
-// 				<p className="no-appointments">Aucun rendez-vous pour le moment.</p>
-// 			) : (
-// 				<table>
-// 					<thead>
-// 						<tr>
-// 							<th>ID</th>
-// 							<th>Nom</th>
-// 							<th>Email</th>
-// 							<th>Date</th>
-// 							<th>Statut</th>
-// 							<th>Actions</th>
-// 						</tr>
-// 					</thead>
-// 					<tbody>
-// 						{appointments.map((appointment) => (
-// 							<tr key={appointment.id}>
-// 								<td>{appointment.id}</td>
-// 								<td>{appointment.nom}</td>
-// 								<td>{appointment.email}</td>
-// 								<td>{appointment.date}</td>
-// 								<td>{appointment.status}</td>
-// 								<td>
-// 									{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-// <button
-// 										onClick={() =>
-// 											handleStatusUpdate(appointment.id, "confirmed")
-// 										}
-// 									>
-// 										Confirmer
-// 									</button>
-// 									{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-// <button
-// 										className="cancel"
-// 										onClick={() =>
-// 											handleStatusUpdate(appointment.id, "cancelled")
-// 										}
-// 									>
-// 										Annuler
-// 									</button>
-// 								</td>
-// 							</tr>
-// 						))}
-// 					</tbody>
-// 				</table>
-// 			)}
-// 		</div>
-// 	);
-// };
+	// Supprimer un rendez-vous
+	const handleDelete = async (id: number) => {
+		try {
+			await axios.delete(`http://localhost:5000/admin/appointments/${id}`);
+			setAppointments(
+				appointments.filter((appointment) => appointment.id !== id),
+			);
+		} catch (err) {
+			setError("Erreur lors de la suppression du rendez-vous.");
+			console.error(err);
+		}
+	};
 
-// export default AdminDashboard;
+	function handleSectionChange(section: string): void {
+		console.log("Section changée :", section);
+	}
+
+	function handleSearch(query: string): void {
+		console.log("Recherche :", query);
+	}
+
+	return (
+		<div className="admin-dashboard">
+			<AdminSidebar
+				activeSection={activeSection}
+				onSectionChange={handleSectionChange}
+			/>
+			<div className="admin-content">
+				<AdminSearchBar onSearch={handleSearch} />
+				<div className="admin-section-content">
+					<div className="admin-appointments">
+						<h2>Gestion des rendez-vous</h2>
+						{error && <p className="error">{error}</p>}
+						<table>
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Email</th>
+									<th>Date</th>
+									<th>Raison</th>
+									<th>Status</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{appointments.length === 0 ? (
+									<tr>
+										<td colSpan={6}>Aucun rendez-vous à afficher.</td>
+									</tr>
+								) : (
+									appointments.map((appointment) => (
+										<tr key={appointment.id}>
+											<td>{appointment.name}</td>
+											<td>{appointment.email}</td>
+											<td>{appointment.date}</td>
+											<td>{appointment.reason}</td>
+											<td>{appointment.status}</td>
+											<td>
+												{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
+												<button onClick={() => handleDelete(appointment.id)}>
+													Supprimer
+												</button>
+											</td>
+										</tr>
+									))
+								)}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default AdminAppointmentsPage;

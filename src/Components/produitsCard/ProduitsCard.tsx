@@ -42,7 +42,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				<h3 className="product-card__name">{product.name}</h3>
 				{/* <p className="product-card__brand">{product.brand}</p> */}
 				<p className="product-card__description">{product.description}</p>
-
 				<div className="product-card__details">
 					<p className="product-card__price">
 						{new Intl.NumberFormat("fr-FR", {
