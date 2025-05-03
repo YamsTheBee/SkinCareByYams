@@ -1,22 +1,25 @@
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react"; // npm install lucide-react
+import { Eye, EyeOff } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./AuthForm.css";
 
 function AuthForm() {
 	const [isLogin, setIsLogin] = useState(true);
 	const [showPassword, setShowPassword] = useState(false);
 	const [formData, setFormData] = useState({
+		username: "",
 		name: "",
 		email: "",
 		password: "",
-		dateOfBirth: "",
+		date_of_birth: "",
 		phone: "",
 		address: "",
 		city: "",
-		zipCode: "",
+		zip_code: "",
 		country: "",
 	});
 	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +29,9 @@ function AuthForm() {
 		e.preventDefault();
 		setError("");
 
-		const url = isLogin ? "/api/login" : "/api/register";
+		const url = isLogin
+			? "http://localhost:5000/api/auth/login"
+			: "http://localhost:5000/api/auth/register";
 
 		try {
 			const response = await fetch(url, {
@@ -40,7 +45,12 @@ function AuthForm() {
 
 			alert(`${isLogin ? "Connexion" : "Inscription"} réussie !`);
 			if (data.token) localStorage.setItem("token", data.token);
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      // Stockez les informations de l'utilisateur
+			localStorage.setItem("user", JSON.stringify(data.user)); 
+
+			// Redirigez vers la page de profil
+			navigate("/profile");
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		} catch (err: any) {
 			setError(err.message);
 		}
@@ -50,7 +60,7 @@ function AuthForm() {
 		<div className="auth-container">
 			<div className="auth-toggle" role="tablist" aria-label="Choix d'action">
 				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button
+				<button
 					aria-pressed={isLogin}
 					className={`auth-toggle-button ${isLogin ? "active" : "inactive"}`}
 					onClick={() => setIsLogin(true)}
@@ -58,7 +68,7 @@ function AuthForm() {
 					Connexion
 				</button>
 				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button
+				<button
 					aria-pressed={!isLogin}
 					className={`auth-toggle-button ${!isLogin ? "active" : "inactive"}`}
 					onClick={() => setIsLogin(false)}
@@ -72,9 +82,25 @@ function AuthForm() {
 				className="auth-form"
 				aria-label="Formulaire d'authentification"
 			>
-				{/* Champs supplémentaires pour l'inscription */}
 				{!isLogin && (
 					<>
+						<div>
+							<label htmlFor="username" className="auth-label">
+								Nom d'utilisateur
+							</label>
+							<input
+								type="text"
+								id="username"
+								name="username"
+								autoComplete="username"
+								placeholder="Votre nom d'utilisateur"
+								value={formData.username}
+								onChange={handleChange}
+								required
+								className="auth-input"
+							/>
+						</div>
+
 						<div>
 							<label htmlFor="name" className="auth-label">
 								Nom
@@ -93,14 +119,14 @@ function AuthForm() {
 						</div>
 
 						<div>
-							<label htmlFor="dateOfBirth" className="auth-label">
+							<label htmlFor="date_of_birth" className="auth-label">
 								Date de naissance
 							</label>
 							<input
 								type="date"
-								id="dateOfBirth"
-								name="dateOfBirth"
-								value={formData.dateOfBirth}
+								id="date_of_birth"
+								name="date_of_birth"
+								value={formData.date_of_birth}
 								onChange={handleChange}
 								required
 								className="auth-input"
@@ -156,15 +182,15 @@ function AuthForm() {
 						</div>
 
 						<div>
-							<label htmlFor="zipCode" className="auth-label">
+							<label htmlFor="zip_code" className="auth-label">
 								Code postal
 							</label>
 							<input
 								type="text"
-								id="zipCode"
-								name="zipCode"
+								id="zip_code"
+								name="zip_code"
 								placeholder="Code postal"
-								value={formData.zipCode}
+								value={formData.zip_code}
 								onChange={handleChange}
 								required
 								className="auth-input"
@@ -189,7 +215,6 @@ function AuthForm() {
 					</>
 				)}
 
-				{/* Champs communs pour la connexion et l'inscription */}
 				<div>
 					<label htmlFor="email" className="auth-label">
 						Email

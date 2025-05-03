@@ -25,7 +25,7 @@
 	margin-bottom: 1rem;
 }
 
-/* Table styles (déjà présents, tu peux les garder ou les migrer ici) */
+/* Table styles (déjà présents, les garder ou les migrer ici) */
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -40,6 +40,7 @@ td {
 }
 
 th {
-	background-color: #4caf50;
+	background-color: #ffb347;
 	color: white;
+	font-weight:  600;
 }

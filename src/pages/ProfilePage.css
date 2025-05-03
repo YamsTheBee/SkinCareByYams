@@ -1,0 +1,49 @@
+.profile-container {
+	padding: 2rem;
+	max-width: 1000px;
+	margin: auto;
+	background-color: #fffdfc;
+	font-family: "Segoe UI", sans-serif;
+	color: #333;
+}
+
+h1 {
+	color: #ffb347;
+	font-size: 2rem;
+	margin-bottom: 0.2rem;
+}
+
+.subtitle {
+	font-size: 1rem;
+	color: #777;
+	margin-bottom: 2rem;
+}
+
+.info-section,
+.section {
+	background-color: #fceef8;
+	border-radius: 12px;
+	padding: 1rem 1.5rem;
+	margin-bottom: 1.5rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.consult-btn {
+	background-color: #ffc1e3;
+	color: #4b2c4a;
+	font-weight: bold;
+	padding: 0.8rem 1.2rem;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.logout-btn {
+	margin-top: 2rem;
+	background-color: #eee;
+	color: #444;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}

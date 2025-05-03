@@ -1,8 +1,17 @@
 #root {
 	width: 100%;
 	margin: 0;
-	padding: 0; /* Enlève tout padding de l'élément racine */
+	padding: 0;
 	text-align: center;
+	--primary-color: #1d3940;
+	--primary-color-dark: #15803d;
+	--secondary-color: #f3f4f6;
+	--text-color: #6b7280;
+	--error-color: #dc2626;
+	--border-color: #d1d5db;
+	--focus-color: rgba(34, 197, 94, 0.3);
+	--box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+	--font-family: "system-ui", sans-serif;
 }
 
 .logo {
@@ -32,15 +41,6 @@
 		animation: logo-spin infinite 20s linear;
 	}
 }
-
-/* .card {
-	padding: 2em;
-}
-
-.read-the-docs {
-	color: #888;
-} */
-/* src/styles/AppointmentActions.css */
 
 button {
 	background-color: #e74c3c;

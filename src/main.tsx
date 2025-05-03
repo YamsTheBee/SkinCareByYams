@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage.tsx";
 import ProduitsPage from "./pages/ProduitsPage.tsx";
 import AdminAppointmentsPage from "./pages/Admin.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -20,12 +21,16 @@ const router = createBrowserRouter([
 				element: <ProduitsPage />,
 			},
 			{
-				path: "/admin/appointments", // Une route plus lisible
+				path: "/admin/appointments",
 				element: <AdminAppointmentsPage />,
 			},
 			{
-				path: "/loginpage", // 👈 Nouvelle route pour la page Auth
+				path: "/loginpage",
 				element: <LoginPage />,
+			},
+			{
+				path: "/profile",
+				element: <ProfilePage />,
 			},
 		],
 	},

@@ -1,5 +1,4 @@
 /* ProduitsCard.css */
-
 .product-card {
 	background-color: #fff;
 	border-radius: 8px;
@@ -34,8 +33,6 @@
 }
 
 .product-card .product-info {
-	/* display: flex;
-	align-items: start; */
 	padding: 1rem;
 }
 
@@ -55,7 +52,7 @@
 	margin-left: 0.5rem;
 }
 .product-card p {
-	/* display: flex; */
+
 	font-size: 1rem;
 	color: #666;
 	margin-bottom: 1rem;
@@ -148,4 +145,4 @@
 	}
 }
 
-/* couleur et css produit description a fixer  */
+/* couleur et css produit description à fixer, à améliorer   */

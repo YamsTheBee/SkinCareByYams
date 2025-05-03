@@ -1,11 +1,12 @@
-// Types/Types.ts
+import type { ReactNode } from "react";
+
 export interface Product {
 	id: number;
 	name: string;
 	description: string;
 	price: number;
 	product_type: "nettoyant" | "hydratant" | "traitement" | "masque";
-	product_url?: string; // URL de l'image
+	product_url?: string; 
 	brand: string;
 	volume: string;
 	skin_type: string;
@@ -15,4 +16,19 @@ export interface Product {
 	contraindications: string; // Added contraindications property
 	rating?: number;
 	reviews?: number;
+}
+export interface User {
+	skin_type: string;
+	country: ReactNode;
+	zip_code: ReactNode;
+	city: ReactNode;
+	phone: ReactNode;
+	name: ReactNode;
+	date_of_birth: ReactNode;
+	address: ReactNode;
+	id: number;
+	username: string;
+	email: string;
+	profilePicture?: string; // facultatif si tu as une image
+	role?: string; // ex: "admin", "user"
 }

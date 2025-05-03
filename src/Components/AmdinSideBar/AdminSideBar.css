@@ -3,7 +3,7 @@
 	min-width: 250px;
 	height: 100vh;
 	background-color: var(--quaternary-color);
-	color: var(--textNavcolor);
+	color: black;
 	padding: 2vh 0;
 	transition: all 0.3s ease;
 	display: flex;
@@ -14,9 +14,12 @@
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 		h2 {
-			color: var(--secondary-color);
+			color: black;
 			font-size: clamp(1.2rem, 1.5vw, 1.8rem);
 			font-weight: 600;
+			font-size: 25px;
+			display: flex;
+			align-items: start;
 		}
 	}
 

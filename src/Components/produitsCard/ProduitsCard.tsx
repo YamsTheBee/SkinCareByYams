@@ -1,7 +1,7 @@
 import type React from "react";
 
 import "./ProduitsCard.css";
-import type { Product } from "../../../Types/Types"; // Ensure the path is correct
+import type { Product } from "../../../Types/Types"; 
 
 interface ProductCardProps {
 	product: Product;
@@ -85,3 +85,4 @@ const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 export default ProductCard;
+// à améliorer ?

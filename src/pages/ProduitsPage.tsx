@@ -32,8 +32,10 @@ const ProduitsPage = () => {
 	}, []);
 
 	const handleEdit = (product: Product) => {
-		setEditingProduct(product); // Affiche le formulaire d'édition avec les données actuelles
-		setUpdatedProduct(product); // Initialisation des valeurs du produit à modifier
+		setEditingProduct(product);
+		// Affiche le formulaire d'édition avec les données actuelles
+		setUpdatedProduct(product);
+		// Initialisation des valeurs du produit à modifier
 	};
 
 	const handleUpdate = async () => {
@@ -57,7 +59,8 @@ const ProduitsPage = () => {
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/api/produits/${updatedProduct.id}`, // Vérifie l'endpoint pour la mise à jour
+				`http://localhost:5000/api/produits/${updatedProduct.id}`,
+
 				{
 					method: "PUT",
 					headers: {
@@ -76,7 +79,7 @@ const ProduitsPage = () => {
 					product.id === data.id ? { ...product, ...data } : product,
 				),
 			);
-			setEditingProduct(null); // Ferme le formulaire d'édition
+			setEditingProduct(null); 
 		} catch (err) {
 			console.error("Erreur lors de la mise à jour:", err);
 		}
