@@ -51,7 +51,7 @@
 .product-card__description,
 .product-card__skin-type,
 /* .product-card .price, */
-.product-card__volume {
+	.product-card__volume {
 	margin-left: 0.5rem;
 }
 .product-card p {
@@ -104,7 +104,7 @@
 	background-color: #555;
 }
 .product-card__edit-button {
-	background-color: #3498db;
+	background-color: #ffb347;
 	color: #fff;
 }
 

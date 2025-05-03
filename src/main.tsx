@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import ProduitsPage from "./pages/ProduitsPage.tsx";
 import AdminAppointmentsPage from "./pages/Admin.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
 			{
 				path: "/admin/appointments", // Une route plus lisible
 				element: <AdminAppointmentsPage />,
+			},
+			{
+				path: "/loginpage", // 👈 Nouvelle route pour la page Auth
+				element: <LoginPage />,
 			},
 		],
 	},

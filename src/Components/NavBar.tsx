@@ -21,6 +21,9 @@ const Navbar = () => {
 					<Link to="/Produits">Produits</Link>
 				</li>
 				<li>
+					<Link to="/LoginPage">Mon Compte</Link>
+				</li>
+				<li>
 					<a href="#contact" className="nav-link">
 						Contact
 					</a>
